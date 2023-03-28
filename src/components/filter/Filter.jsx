@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { FindBlock, FindSection } from './filter.styles';
 
@@ -22,6 +22,6 @@ export const Filter = ({ onFind }) => {
   );
 };
 
-Filter.propTypes = {
-  onFind: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   onFind: PropTypes.func.isRequired,
+// };
