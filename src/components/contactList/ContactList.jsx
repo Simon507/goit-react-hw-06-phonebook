@@ -1,17 +1,17 @@
 // import PropTypes from 'prop-types';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { getContactList, getFindTarget } from '../../redux/selectors';
+import { getContactList } from '../../redux/selectors';
 
-import { addToList, deleteFromList } from '../../redux/actions';
+// import { addToList, deleteFromList } from '../../redux/actions';
 
 import { ContactCard, ContactLst } from './contactList.styles';
 
 export const ContactList = () => {
   const value = useSelector(getContactList);
-  const find = useSelector(getFindTarget);
-  const dispatch = useDispatch();
+  // const find = useSelector(getFindTarget);
+  // const dispatch = useDispatch();
 
   // console.log(value);
   // console.log(find);
