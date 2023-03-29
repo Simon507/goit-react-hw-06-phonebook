@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 const initialState = {
   contactList: [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -10,31 +12,32 @@ const initialState = {
   },
 };
 
-export const rootReducer = (state = initialState, action) => {
+const editingReducer = (state = initialState.contactList, action) => {
   switch (action.type) {
     case 'contactList/addContactList': {
-      return {
-        ...state,
-        contactList: [...state.contactList, action.payload],
-      };
+      return [...state, action.payload];
     }
 
     case 'contactList/deleteFromList': {
-      return {
-        ...state,
-        contactList: state.contactList.filter(
-          contactList => contactList.id !== action.payload
-        ),
-      };
+      return state.filter(position => position.id !== action.payload);
     }
 
+    default:
+      return state;
+  }
+};
+
+const filterReducer = (state = initialState.filters, action) => {
+  switch (action.type) {
     case 'filters/findTarget': {
-      return {
-        ...state,
-        filters: { findTarget: [action.payload] },
-      };
+      return { findTarget: action.payload };
     }
     default:
       return state;
   }
 };
+
+export const rootReducer = combineReducers({
+  contactList: editingReducer,
+  filters: filterReducer,
+});

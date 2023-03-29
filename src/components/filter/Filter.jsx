@@ -13,7 +13,6 @@ export const Filter = () => {
           <label htmlFor="name">Find contact</label>
           <input
             onChange={e => {
-              console.log(e.target.value);
               dispatch(setFilter(e.target.value));
             }}
             id="name"
