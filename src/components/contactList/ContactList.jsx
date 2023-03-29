@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getContactList, getFindTarget } from '../../redux/selectors';
 
-import { deleteFromList } from '../../redux/actions';
+import { deleteFromList } from '../../redux/editingSlice';
 
 import { ContactCard, ContactLst } from './contactList.styles';
 

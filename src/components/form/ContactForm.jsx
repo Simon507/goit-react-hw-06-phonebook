@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addToList } from '../../redux/actions';
+import { addContactList } from '../../redux/editingSlice';
 import { getContactList } from '../../redux/selectors';
 
 import { Formik, Field } from 'formik';
@@ -45,7 +45,7 @@ export const ContactForm = ({ addContact }) => {
           return alert(`${values.name} is already exist in contacts`);
         }
 
-        dispatch(addToList(id, values.name, values.number));
+        dispatch(addContactList(id, values.name, values.number));
         actions.resetForm();
       }}
     >

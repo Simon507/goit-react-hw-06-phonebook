@@ -1,4 +1,4 @@
-import { setFilter } from '../../redux/actions';
+import { findTarget } from '../../redux/filterSlice';
 import { useDispatch } from 'react-redux';
 
 import { FindBlock, FindSection } from './filter.styles';
@@ -13,7 +13,7 @@ export const Filter = () => {
           <label htmlFor="name">Find contact</label>
           <input
             onChange={e => {
-              dispatch(setFilter(e.target.value));
+              dispatch(findTarget(e.target.value));
             }}
             id="name"
             name="name"
