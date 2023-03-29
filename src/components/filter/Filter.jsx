@@ -1,8 +1,11 @@
-// import PropTypes from 'prop-types';
+import { setFilter } from '../../redux/actions';
+import { useDispatch } from 'react-redux';
 
 import { FindBlock, FindSection } from './filter.styles';
 
-export const Filter = ({ onFind }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <FindSection>
@@ -10,7 +13,8 @@ export const Filter = ({ onFind }) => {
           <label htmlFor="name">Find contact</label>
           <input
             onChange={e => {
-              onFind(e.target.value);
+              console.log(e.target.value);
+              dispatch(setFilter(e.target.value));
             }}
             id="name"
             name="name"
@@ -21,7 +25,3 @@ export const Filter = ({ onFind }) => {
     </>
   );
 };
-
-// Filter.propTypes = {
-//   onFind: PropTypes.func.isRequired,
-// };

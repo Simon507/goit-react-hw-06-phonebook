@@ -26,6 +26,12 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
     }
+    case 'filters/findTarget': {
+      return {
+        ...state,
+        filters: { findTarget: [action.payload] },
+      };
+    }
     default:
       return state;
   }
