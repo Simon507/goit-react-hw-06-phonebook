@@ -13,12 +13,10 @@ export const App = () => {
     <Provider store={store}>
       <Layout>
         <GlobalStyle />
-
         <h1>Phonebook</h1>
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
-
         <ContactList />
       </Layout>
     </Provider>
