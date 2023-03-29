@@ -18,6 +18,7 @@ export const rootReducer = (state = initialState, action) => {
         contactList: [...state.contactList, action.payload],
       };
     }
+
     case 'contactList/deleteFromList': {
       return {
         ...state,
@@ -26,6 +27,7 @@ export const rootReducer = (state = initialState, action) => {
         ),
       };
     }
+
     case 'filters/findTarget': {
       return {
         ...state,
