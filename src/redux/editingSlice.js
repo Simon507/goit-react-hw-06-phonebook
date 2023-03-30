@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// для хранилища
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
 const editingInitialState = {
   contactList: [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -11,11 +15,11 @@ const editingInitialState = {
 
 const editingSlice = createSlice({
   name: 'contactList',
-  initialState: editingInitialState.contactList,
+  initialState: editingInitialState,
   reducers: {
     addContactList: {
       reducer(state, action) {
-        return [...state, action.payload];
+        state.contactList.push(action.payload);
       },
 
       prepare(friendId, friendName, friendNumber) {
@@ -30,10 +34,20 @@ const editingSlice = createSlice({
     },
 
     deleteFromList(state, action) {
-      return state.filter(position => position.id !== action.payload);
+      state.contactList.splice(action.payload, 1);
     },
   },
 });
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  whiteList: ['contactList'],
+};
+
+export const persistedEditingReducer = persistReducer(
+  persistConfig,
+  editingSlice.reducer
+);
+
 export const { addContactList, deleteFromList } = editingSlice.actions;
-export const editingReducer = editingSlice.reducer;

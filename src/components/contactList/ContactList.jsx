@@ -8,6 +8,7 @@ import { ContactCard, ContactLst } from './contactList.styles';
 
 export const ContactList = () => {
   const value = useSelector(getContactList);
+
   const find = useSelector(getFindTarget);
 
   const dispatch = useDispatch();
